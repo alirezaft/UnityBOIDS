@@ -19,13 +19,18 @@ public class Drone : MonoBehaviour
     [SerializeField] private float m_CohesionRuleTreshold;
     [SerializeField] private float m_CohesionRuleCoefficient;
 
-    private float CohesionRuleWeight;
-    private float AlignmentRuleWeight;
-    private float SeperationRuleWeight;
+    private float m_CohesionRuleWeight;
+    private float m_AlignmentRuleWeight;
+    private float m_SeperationRuleWeight;
+    private float m_BorderAvoidanceruleWeight;
 
     private Vector3 m_SeperationDirection;
     private Vector3 m_AverageHeadingDirection;
     private Vector3 m_CenterofMassDirection;
+    private Vector3 m_BorderAvoidanceDirection;
+
+    private float m_FlockRadius;
+    private Vector3 m_FlockOrigin;
 
     private void Awake()
     {
@@ -38,9 +43,10 @@ public class Drone : MonoBehaviour
         CalculateAlignmentRule();
         CalculateCohesionRule();
         CalculateSeperationRule();
-
-        var direction = SeperationRuleWeight * m_SeperationDirection + CohesionRuleWeight * m_CenterofMassDirection +
-                        AlignmentRuleWeight * m_AverageHeadingDirection;
+        CalculateborderAvoidanceRule();
+        
+        var direction = m_SeperationRuleWeight * m_SeperationDirection + m_CohesionRuleWeight * m_CenterofMassDirection +
+                        m_AlignmentRuleWeight * m_AverageHeadingDirection + m_BorderAvoidanceruleWeight * m_BorderAvoidanceDirection;
 
         // direction = (direction - m_AverageHeadingDirection) / m_SteeringCoefficient;
 
@@ -72,7 +78,6 @@ public class Drone : MonoBehaviour
         var seperationDirection = Vector3.zero;
 
         var nearbyDrones = Physics.OverlapSphere(transform.position, m_NearbyDronesRadius);
-        Debug.Log(nearbyDrones.Length);
 
         foreach (var drone in nearbyDrones)
         {
@@ -99,10 +104,32 @@ public class Drone : MonoBehaviour
             m_CenterofMassDirection *= m_CohesionRuleCoefficient;
     }
 
-    public void SetWeights(float seperation, float cohesion, float alignment)
+    private void CalculateborderAvoidanceRule()
     {
-        CohesionRuleWeight = cohesion;
-        SeperationRuleWeight = seperation;
-        AlignmentRuleWeight = alignment;
+        // Debug.Log(Vector3.Distance(transform.position, m_FlockOrigin));
+        if (Vector3.Distance(transform.position, m_FlockOrigin) >= m_FlockRadius)
+            m_BorderAvoidanceDirection = m_FlockOrigin - transform.position;
+
+        m_BorderAvoidanceDirection = m_BorderAvoidanceDirection.normalized;
+        Debug.Log(m_BorderAvoidanceDirection);
+        
+    }
+
+    public void SetWeights(float seperation, float cohesion, float alignment, float borderAvoidance)
+    {
+        m_CohesionRuleWeight = cohesion;
+        m_SeperationRuleWeight = seperation;
+        m_AlignmentRuleWeight = alignment;
+        m_BorderAvoidanceruleWeight = borderAvoidance;
+    }
+
+    public void SetFlockOrigin(Vector3 origin)
+    {
+        m_FlockOrigin = origin;
+    }
+
+    public void SetFlockRadius(float radius)
+    {
+        m_FlockRadius = radius;
     }
 }

@@ -13,6 +13,7 @@ public class FlockManager : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] private float CohesionRuleWeight;
     [SerializeField] [Range(0f, 1f)] private float AlignmentRuleWeight;
     [SerializeField] [Range(0f, 1f)] private float SeperationRuleWeight;
+    [SerializeField] [Range(0f, 1f)] private float BorderAvoidanceRuleWeight;
     
     private Drone[] m_Drones;
 
@@ -32,7 +33,10 @@ public class FlockManager : MonoBehaviour
             var drotation = Random.insideUnitSphere * 20;
             var drone = Instantiate(m_DronePrefab, dposition, Quaternion.Euler(drotation), transform).GetComponent<Drone>();
             drone.SetBelongingFlock(this);
-            drone.SetWeights(SeperationRuleWeight, CohesionRuleWeight, AlignmentRuleWeight);
+            drone.SetWeights(SeperationRuleWeight, CohesionRuleWeight, AlignmentRuleWeight, BorderAvoidanceRuleWeight);
+            drone.SetFlockOrigin(transform.position);
+            drone.SetFlockRadius(m_FlockRadius);
+            
             m_Drones[i] = drone;
         }    
     }
