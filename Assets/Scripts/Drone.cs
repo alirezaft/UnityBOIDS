@@ -44,14 +44,12 @@ public class Drone : MonoBehaviour
         CalculateCohesionRule();
         CalculateSeperationRule();
         CalculateborderAvoidanceRule();
-        
-        var direction = m_SeperationRuleWeight * m_SeperationDirection + m_CohesionRuleWeight * m_CenterofMassDirection +
-                        m_AlignmentRuleWeight * m_AverageHeadingDirection + m_BorderAvoidanceruleWeight * m_BorderAvoidanceDirection;
 
-        // direction = (direction - m_AverageHeadingDirection) / m_SteeringCoefficient;
-
-
-        // transform.LookAt(direction);
+        var direction = m_SeperationRuleWeight * m_SeperationDirection +
+                        m_CohesionRuleWeight * m_CenterofMassDirection +
+                        m_AlignmentRuleWeight * m_AverageHeadingDirection +
+                        m_BorderAvoidanceruleWeight * m_BorderAvoidanceDirection
+                        ;
         var lookQuaternion = Quaternion.LookRotation(direction.normalized);
         transform.rotation = lookQuaternion;
         m_rigidbody.velocity = transform.forward * m_MovementSpeed;
@@ -63,14 +61,19 @@ public class Drone : MonoBehaviour
         m_BelongingFlock = flock;
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     m_NearDrones.Add((other.transform.position - transform.position).normalized);
-    // }
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, m_NearbyDronesRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + m_SeperationDirection);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + m_AverageHeadingDirection);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + m_CenterofMassDirection);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + m_SeperationRuleWeight * m_SeperationDirection +
+                                            m_CohesionRuleWeight * m_CenterofMassDirection +
+                                            m_AlignmentRuleWeight * m_AverageHeadingDirection +
+                                            m_BorderAvoidanceruleWeight * m_BorderAvoidanceDirection);
     }
 
     private void CalculateSeperationRule()
@@ -81,7 +84,11 @@ public class Drone : MonoBehaviour
 
         foreach (var drone in nearbyDrones)
         {
+            if (transform.position.Equals(drone.transform.position))
+                continue;
+
             var dist = (drone.transform.position - transform.position).normalized;
+            dist /= Vector3.Distance(drone.transform.position, transform.position);
             seperationDirection -= dist;
         }
 
@@ -92,7 +99,6 @@ public class Drone : MonoBehaviour
     private void CalculateAlignmentRule()
     {
         m_AverageHeadingDirection = (transform.position - m_BelongingFlock.GetAverageHeading().normalized).normalized;
-        // Debug.Log(m_BelongingFlock.GetAverageHeading());
     }
 
     private void CalculateCohesionRule()
@@ -106,13 +112,10 @@ public class Drone : MonoBehaviour
 
     private void CalculateborderAvoidanceRule()
     {
-        // Debug.Log(Vector3.Distance(transform.position, m_FlockOrigin));
         if (Vector3.Distance(transform.position, m_FlockOrigin) >= m_FlockRadius)
             m_BorderAvoidanceDirection = m_FlockOrigin - transform.position;
 
         m_BorderAvoidanceDirection = m_BorderAvoidanceDirection.normalized;
-        Debug.Log(m_BorderAvoidanceDirection);
-        
     }
 
     public void SetWeights(float seperation, float cohesion, float alignment, float borderAvoidance)

@@ -57,11 +57,6 @@ public class FlockManager : MonoBehaviour
         m_CenterOfMass = sumDronePosition / m_DroneNumber;
         m_AverageHeading = sumHeading / m_DroneNumber;
     }
-    
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(m_CenterOfMass, 1);
-    }
 
     public Vector3 GetAverageHeading()
     {

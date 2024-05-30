@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_DroneNumber
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_DronePrefab
@@ -392,23 +392,23 @@ PrefabInstance:
       objectReference: {fileID: 7125463891951401697, guid: e2f530850a4fc9147be5eccc1800c58c, type: 3}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_FlockRadius
-      value: 150
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: CohesionRuleWeight
-      value: 0.816
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: AlignmentRuleWeight
-      value: 0.688
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: SeperationRuleWeight
-      value: 0.902
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: BorderAvoidanceRuleWeight
-      value: 0.922
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8775409140105018831, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_Name
