@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -252,7 +253,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.7132075, g: 0.45618367, b: 0.618834, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -309,6 +310,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb4347b8cf9fc14b8aad18fd57ffef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TargetFlock: {fileID: 1143219583}
+--- !u!114 &1143219583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
+  m_PrefabInstance: {fileID: 5356348827558255189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7ed8f8570b8b54892f78c0359c887b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5356348827558255189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_DroneNumber
-      value: 50
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_DronePrefab
@@ -367,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 7125463891951401697, guid: e2f530850a4fc9147be5eccc1800c58c, type: 3}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_FlockRadius
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: CohesionRuleWeight
@@ -379,7 +404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: SeperationRuleWeight
-      value: 0.819
+      value: 0.902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305041775661131165, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
+      propertyPath: BorderAvoidanceRuleWeight
+      value: 0.922
       objectReference: {fileID: 0}
     - target: {fileID: 8775409140105018831, guid: e08deff4edbbf0a4f92904ba6337ad7c, type: 3}
       propertyPath: m_Name
