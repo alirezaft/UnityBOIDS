@@ -18,6 +18,7 @@ public class Drone : MonoBehaviour
     [SerializeField] private float m_NearbyDronesRadius;
     [SerializeField] private float m_CohesionRuleTreshold;
     [SerializeField] private float m_CohesionRuleCoefficient;
+    [Range(0f, 1f)] [SerializeField] private float m_DirectionLowPassFilterCutoff;
 
     private float m_CohesionRuleWeight;
     private float m_AlignmentRuleWeight;
@@ -31,11 +32,13 @@ public class Drone : MonoBehaviour
 
     private float m_FlockRadius;
     private Vector3 m_FlockOrigin;
+    private Vector3 m_PreviousDirection;
 
     private void Awake()
     {
         m_NearDrones = new List<Vector3>();
         m_rigidbody = GetComponent<Rigidbody>();
+        m_PreviousDirection = Vector3.zero;
     }
 
     private void Update()
@@ -44,12 +47,16 @@ public class Drone : MonoBehaviour
         CalculateCohesionRule();
         CalculateSeperationRule();
         CalculateborderAvoidanceRule();
-
+        
+        
         var direction = m_SeperationRuleWeight * m_SeperationDirection +
                         m_CohesionRuleWeight * m_CenterofMassDirection +
                         m_AlignmentRuleWeight * m_AverageHeadingDirection +
                         m_BorderAvoidanceruleWeight * m_BorderAvoidanceDirection
                         ;
+        direction = Vector3.Lerp(direction, m_PreviousDirection, m_DirectionLowPassFilterCutoff);
+        m_PreviousDirection = direction;
+        
         var lookQuaternion = Quaternion.LookRotation(direction.normalized);
         transform.rotation = lookQuaternion;
         m_rigidbody.velocity = transform.forward * m_MovementSpeed;
