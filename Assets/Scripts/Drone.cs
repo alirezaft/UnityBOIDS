@@ -11,9 +11,6 @@ public class Drone : MonoBehaviour
     private FlockManager m_BelongingFlock;
     private Rigidbody m_rigidbody;
 
-    [FormerlySerializedAs("m_SteeringSpeed")] [Range(0, 90f)] [SerializeField]
-    private float m_SteeringCoefficient;
-
     [SerializeField] private float m_MovementSpeed;
     [SerializeField] private float m_NearbyDronesRadius;
     [SerializeField] private float m_CohesionRuleTreshold;
