@@ -15,7 +15,9 @@ By summing the vectors obtained from these 4 rules, the final movement direction
 3. Open `SampleScene` scene in the scenes folder.
 4. Press play.
 
-The `flock` game object has some settings:
+The `flock` prefab can be found in `Prefabs` folder. It has some attributes in the component `Flock Manager`
+
+![Flock Inspector](./FlockInspector.png)
 * **Drone Number:** The number of drones to be spawned in the flock.
 * **Drone Prefab:** The prefab of the drone to be spawned.
 * **Flock Radius:** The radius of the area the birds are allowed to flay in.
@@ -24,7 +26,9 @@ The `flock` game object has some settings:
 * **Alignment Rule Weight:** The weight of the Alignment rule in the final direction vector.
 * **Border Avoidance Rule Weight:** The weight of the border avoidance rule in the final direction vector.
 
-The drone prefab can be found in the `Prefab` folder. This prefab has some attributes you can change as well:
+The drone prefab can be found in the `Prefab` folder. This prefab has some attributes you can change as well in the `Drone` component:
+
+![Drone Inspector](./DroneInspector.png)
 * **Movement Speed:** The speed of the drones.
 * **Nearby Drones Radius:** The radius in which the other drones will be considered near and involved in the cohesion rule calculation.
 * **Cohesion Rule Threshold:** If the distance between the drone and the center of mass is less than the value of this variable, cohesion rule vector will be multiplied by Cohesion Rule Coefficient.
