@@ -49,9 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SteeringCoefficient: 1
   m_MovementSpeed: 30
-  m_NearbyDronesRadius: 5
+  m_NearbyDronesRadius: 5.17
   m_CohesionRuleTreshold: 2
   m_CohesionRuleCoefficient: 0.5
+  m_DirectionLowPassFilterCutoff: 0.95
 --- !u!54 &8212046830611782960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.22
+  m_Radius: 3.43
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5729199408134244841
 PrefabInstance:
