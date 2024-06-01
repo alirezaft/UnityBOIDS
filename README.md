@@ -1,7 +1,7 @@
 # Boids algorithm implementaion in Unity
 ![Boids demonstration GIF with 500 birds](./SampleGIF.gif)
 ## What is Boids algorithm?
-(Boids algorithm)[https://en.wikipedia.org/wiki/Boids] is an algorithm that tries to mimic the behavior and the movement of the bird flocks. It achieves this by using 3 simple rules:<br>
+[Boids algorithm](https://en.wikipedia.org/wiki/Boids) is an algorithm that tries to mimic the behavior and the movement of the bird flocks. It achieves this by using 3 simple rules:<br>
 1. **Cohesion:** All the birds in the flock must move towards the center of mass of the flock
 2. **Separation:** All the birds must move away from the other birds to avoid collision.
 3. **Alignment:** all the birds must steer towards the average heading direction of the flock.
