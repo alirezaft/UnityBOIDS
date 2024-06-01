@@ -1,7 +1,7 @@
 # Boids algorithm implementaion in Unity
 ![Boids demonstration GIF with 500 birds](./SampleGIF.gif)
 ## What is Boids algorithm?
-Boids algorithm is an algorithm that tries to mimic the behavior and the movement of the bird flocks. It achieves this by using 3 simple rules:<br>
+(Boids algorithm)[https://en.wikipedia.org/wiki/Boids] is an algorithm that tries to mimic the behavior and the movement of the bird flocks. It achieves this by using 3 simple rules:<br>
 1. **Cohesion:** All the birds in the flock must move towards the center of mass of the flock
 2. **Separation:** All the birds must move away from the other birds to avoid collision.
 3. **Alignment:** all the birds must steer towards the average heading direction of the flock.
@@ -35,5 +35,5 @@ The drone prefab can be found in the `Prefab` folder. This prefab has some attri
 * **Cohesion Rule Coefficient:** The number to be multiplied with the cohesion vector if the distance between the bird and the center of mass is less than Cohesion Rule Threshold.
 * **Direction Low Pass Filter Cutoff:** To stabilize the direction vector a low pass filter has been used. It's basically a lerp between the current and previous direction vector. This attribute controls the lerp `t` argument. 0 means current direction vector and 1 means the previous direction vector.  
 ---
-The drone model used in this project is made be Mateus Schwaab and is downloaded from [here](https://sketchfab.com/3d-models/drone-301fdddb9cd9420faa1174e68e0b56ab)
+The drone model used in this project is made be Mateus Schwaab and is downloaded from [here](https://sketchfab.com/3d-models/drone-301fdddb9cd9420faa1174e68e0b56ab).
 
