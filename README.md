@@ -34,4 +34,6 @@ The drone prefab can be found in the `Prefab` folder. This prefab has some attri
 * **Cohesion Rule Threshold:** If the distance between the drone and the center of mass is less than the value of this variable, cohesion rule vector will be multiplied by Cohesion Rule Coefficient.
 * **Cohesion Rule Coefficient:** The number to be multiplied with the cohesion vector if the distance between the bird and the center of mass is less than Cohesion Rule Threshold.
 * **Direction Low Pass Filter Cutoff:** To stabilize the direction vector a low pass filter has been used. It's basically a lerp between the current and previous direction vector. This attribute controls the lerp `t` argument. 0 means current direction vector and 1 means the previous direction vector.  
+---
+The drone model used in this project is made be Mateus Schwaab and is downloaded from [here](https://sketchfab.com/3d-models/drone-301fdddb9cd9420faa1174e68e0b56ab)
 
