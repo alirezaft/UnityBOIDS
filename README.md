@@ -33,7 +33,7 @@ The drone prefab can be found in the `Prefab` folder. This prefab has some attri
 
 ![Drone Inspector](./DroneInspector.png)
 * **Movement Speed:** The speed of the drones.
-* **Nearby Drones Radius:** The radius in which the other drones will be considered near and involved in the cohesion rule calculation.
+* **Nearby Drones Radius:** The radius in which the other drones will be considered near and involved in the separation rule calculation.
 * **Cohesion Rule Threshold:** If the distance between the drone and the center of mass is less than the value of this variable, cohesion rule vector will be multiplied by Cohesion Rule Coefficient.
 * **Cohesion Rule Coefficient:** The number to be multiplied with the cohesion vector if the distance between the bird and the center of mass is less than Cohesion Rule Threshold.
 * **Direction Low Pass Filter Cutoff:** To stabilize the direction vector a low pass filter has been used. It's basically a lerp between the current and previous direction vector. This attribute controls the lerp `t` argument. 0 means current direction vector and 1 means the previous direction vector.  
