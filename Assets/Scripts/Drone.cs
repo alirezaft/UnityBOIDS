@@ -86,13 +86,27 @@ public class Drone : MonoBehaviour
 
         var nearbyDrones = Physics.OverlapSphere(transform.position, m_NearbyDronesRadius);
 
-        foreach (var drone in nearbyDrones)
+        foreach (var col in nearbyDrones)
         {
-            if (transform.position.Equals(drone.transform.position))
+            if (transform.position.Equals(col.transform.position))
                 continue;
 
-            var dist = (drone.transform.position - transform.position).normalized;
-            dist /= Vector3.Distance(drone.transform.position, transform.position);
+            var dist = Vector3.zero;
+            
+            if(col.tag.Equals("Untagged"))
+            {
+                dist = (col.transform.position - transform.position).normalized;
+                dist /= Vector3.Distance(col.transform.position, transform.position);
+            }
+            else if (col.tag.Equals("Obstacle"))
+            {
+                Debug.Log("OBSTACLE!!!!");
+                dist = (col.ClosestPoint(transform.position) - transform.position).normalized;
+                dist /= Vector3.Distance(col.ClosestPoint(transform.position), transform.position);
+
+            }
+            
+            // dist /= Vector3.Distance(col.transform.position, transform.position);
             seperationDirection -= dist;
         }
 
