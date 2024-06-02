@@ -9,7 +9,7 @@
 
 I have added a 4th rule: border avoidance to make the birds fly in a certain area.
 
-In this implementaion, objects tagged "Obstacle" will be avoided too. They will be involved in the separation rule.
+In this implementaion, objects tagged `Obstacle` will be avoided too. They will be involved in the separation rule.
 
 By summing the vectors obtained from these 4 rules, the final movement direction of each bird can be calculated.
 ## How to use this project?
