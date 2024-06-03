@@ -100,7 +100,6 @@ public class Drone : MonoBehaviour
             }
             else if (col.tag.Equals("Obstacle"))
             {
-                Debug.Log("OBSTACLE!!!!");
                 dist = (col.ClosestPoint(transform.position) - transform.position).normalized;
                 dist /= Vector3.Distance(col.ClosestPoint(transform.position), transform.position);
 
