@@ -12,6 +12,8 @@ I have added a 4th rule: border avoidance to make the birds fly in a certain are
 In this implementaion, objects tagged `Obstacle` will be avoided too. They will be involved in the separation rule.
 
 By summing the vectors obtained from these 4 rules, the final movement direction of each bird can be calculated.
+
+You can read the detailed implementaion breakdown in my medium article [here](https://blog.devgenius.io/boids-algorithm-simulating-bird-flocks-in-unity-ec733d529a92).
 ## How to use this project?
 1. Clone this repository.
 2. Open the project in Unity 2022.3.16 (Other versions are not tested but they might work).
